@@ -11,7 +11,7 @@ const indexRoute = require('./src/routes');
 const authRoute = require('./src/routes/auth.route');
 const companyRoute = require('./src/routes/company.route');
 const userRoute = require('./src/routes/user.route');
-
+const moduleRoute = require('./src/routes/module.route');
 
 // view engine setup
 app.use(bodyParser.json());
@@ -24,6 +24,7 @@ app.use('/', indexRoute);
 app.use('/api', authRoute);
 app.use('/api/company', companyRoute);
 app.use('/api/user', userRoute);
+app.use('/api/module', moduleRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

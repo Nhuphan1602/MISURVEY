@@ -1,12 +1,18 @@
 const jwt = require('jsonwebtoken');
 
+const AUTH_EXEMPTIONS_STARTS_WITH = ['/public']; // routes that start with these strings
+const AUTH_EXEMPTIONS_ENDS_WITH = ['/login']; // routes that end with these strings
+
 const tokenVerification = (req, res, next) => {
   console.log(
     `authentication.middleware | tokenVerification | ${req?.originalUrl}`
   );
   try {
-    if (req?.originalUrl.endsWith("/login")) {
-      console.log('Skip token verification')
+    if (
+      AUTH_EXEMPTIONS_STARTS_WITH.some(prefix => req.originalUrl.startsWith(prefix)) ||
+      AUTH_EXEMPTIONS_ENDS_WITH.some(suffix => req.originalUrl.endsWith(suffix))
+    ) {
+      console.log('Skip token verification for:', req.originalUrl);
       return next();
     }
 
