@@ -13,7 +13,7 @@ const loginController = async (req, res) => {
       res.json(result);
     }
   } catch (error) {
-    res.status(400).json(result);
+    res.status(400).json({ message: error.message });
   }
 };
 

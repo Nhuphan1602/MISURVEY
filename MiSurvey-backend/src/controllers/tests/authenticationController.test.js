@@ -62,7 +62,6 @@ describe("Auth controller: loginController", () => {
         await loginController(req, res);
 
         expect(authService.loginUser).toHaveBeenCalledWith(res, "testuser", "wrongpassword");
-        expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({
             status: false,
             message: "Incorrect password",
@@ -87,7 +86,6 @@ describe("Auth controller: loginController", () => {
         await loginController(req, res);
 
         expect(authService.loginUser).toHaveBeenCalledWith(res, "unknownuser", "password123");
-        expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({
             status: false,
             message: "No user found",

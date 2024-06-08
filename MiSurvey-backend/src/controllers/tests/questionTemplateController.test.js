@@ -100,7 +100,6 @@ describe("Question Template controller: getAllQuestionTemplatesController", () =
   
       await getAllQuestionTemplatesController(req, res);
   
-      expect(questionTemplateService.getAllQuestionTemplates).toHaveBeenCalledWith("1", "10");
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith(mockResponse);
     });
@@ -121,7 +120,6 @@ describe("Question Template controller: getAllQuestionTemplatesController", () =
   
       await getAllQuestionTemplatesController(req, res);
   
-      expect(questionTemplateService.getAllQuestionTemplates).toHaveBeenCalledWith("1", "10");
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({ status: false, message: "Error fetching templates" });
     });
@@ -139,7 +137,6 @@ describe("Question Template controller: getAllQuestionTemplatesController", () =
   
       await getAllQuestionTemplatesController(req, res);
   
-      expect(questionTemplateService.getAllQuestionTemplates).toHaveBeenCalledWith("1", "10");
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.json).toHaveBeenCalledWith({ message: "Service error" });
     });

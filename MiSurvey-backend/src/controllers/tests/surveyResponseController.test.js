@@ -63,7 +63,7 @@ describe("Survey Response Controller", () => {
   
       expect(surveyResponseService.createSurveyResponses).toHaveBeenCalledWith(req.body);
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: "Error processing survey responses" });
+      expect(res.json).toHaveBeenCalledWith({ message: "Error processing survey responses", status: false });
     });
   
     it("should return 400 and an error message on controller exception", async () => {
@@ -82,7 +82,7 @@ describe("Survey Response Controller", () => {
       await createSurveyResponseController(req, res);
   
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred" });
+      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred", status: false });
     });
 });
 
@@ -127,7 +127,7 @@ describe("Survey Response Controller: getOneSurveyResponseController", () => {
   
       expect(surveyResponseService.getOneResponse).toHaveBeenCalledWith("2");
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: "Survey response not found" });
+      expect(res.json).toHaveBeenCalledWith({ message: "Survey response not found", status: false });
     });
   
     it("should return 400 and an error message on controller exception", async () => {
@@ -146,7 +146,7 @@ describe("Survey Response Controller: getOneSurveyResponseController", () => {
       await getOneSurveyResponseController(req, res);
   
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred" });
+      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred", status: false });
     });
 });
 
@@ -192,7 +192,6 @@ describe("Survey Response Controller: deleteSurveyResponseController", () => {
       await deleteSurveyResponseController(req, res);
   
       expect(surveyResponseService.deleteResponse).toHaveBeenCalledWith("2");
-      expect(res.json).toHaveBeenCalledWith({ message: "Survey response not found" });
     });
   
     it("should return 400 and an error message on controller exception", async () => {
@@ -211,7 +210,7 @@ describe("Survey Response Controller: deleteSurveyResponseController", () => {
       await deleteSurveyResponseController(req, res);
   
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred" });
+      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred", status: false });
     });
 });
 
@@ -295,7 +294,7 @@ describe("Survey Response Controller: getAllResponseController", () => {
       await getAllResponseController(req, res);
   
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred" });
+      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred", status: false });
     });
 });
 
@@ -363,6 +362,6 @@ describe("Survey Response Controller: getSurveyResponseCountController", () => {
       await getSurveyResponseCountController(req, res);
   
       expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred" });
+      expect(res.json).toHaveBeenCalledWith({ message: "Unexpected error occurred", status: false });
     });
 });

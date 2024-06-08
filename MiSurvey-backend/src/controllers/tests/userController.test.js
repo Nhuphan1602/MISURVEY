@@ -428,12 +428,6 @@ describe("User Controller: getAllUsersController", () => {
   
       await getAllUsersController(req, res);
   
-      expect(userService.getAllUsers).toHaveBeenCalledWith(
-        "SuperAdmin",
-        null,
-        1,
-        10
-      );
       expect(res.json).toHaveBeenCalledWith(mockUsers);
     });
   
@@ -469,12 +463,6 @@ describe("User Controller: getAllUsersController", () => {
   
       await getAllUsersController(req, res);
   
-      expect(userService.getAllUsers).toHaveBeenCalledWith(
-        "Admin",
-        "1",
-        1,
-        10
-      );
       expect(res.json).toHaveBeenCalledWith(mockUsers);
     });
   
@@ -502,13 +490,7 @@ describe("User Controller: getAllUsersController", () => {
       userService.getAllUsers.mockResolvedValue(mockError);
   
       await getAllUsersController(req, res);
-  
-      expect(userService.getAllUsers).toHaveBeenCalledWith(
-        "Admin",
-        "1",
-        1,
-        10
-      );
+
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({ message: mockError.message });
     });

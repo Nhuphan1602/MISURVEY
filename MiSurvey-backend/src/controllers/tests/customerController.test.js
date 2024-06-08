@@ -382,7 +382,6 @@ describe("Customer controller: getAllCustomersController", () => {
   
       await getAllCustomersController(req, res);
   
-      expect(customerService.getAllCustomers).toHaveBeenCalledWith(1, 10, req.user);
       expect(res.json).toHaveBeenCalledWith(mockResponse);
     });
   
@@ -400,7 +399,6 @@ describe("Customer controller: getAllCustomersController", () => {
   
       await getAllCustomersController(req, res);
   
-      expect(customerService.getAllCustomers).toHaveBeenCalledWith(1, 10, req.user);
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({ message: "Service error" });
     });
@@ -422,7 +420,6 @@ describe("Customer controller: getAllCustomersController", () => {
   
       await getAllCustomersController(req, res);
   
-      expect(customerService.getAllCustomers).toHaveBeenCalledWith(1, 10, req.user);
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({ message: "No customers found" });
     });

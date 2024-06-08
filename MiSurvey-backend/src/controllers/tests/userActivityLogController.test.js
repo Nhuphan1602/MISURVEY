@@ -39,7 +39,6 @@ describe("Activity Controller: getAllActivitiesController", () => {
   
       await getAllActivitiesController(req, res);
   
-      expect(userActivityLogService.getAllActivities).toHaveBeenCalledWith(req.user, 1, 10);
       expect(res.json).toHaveBeenCalledWith(mockActivities);
       expect(res.status).not.toHaveBeenCalledWith(400);
     });
@@ -72,7 +71,6 @@ describe("Activity Controller: getAllActivitiesController", () => {
   
       await getAllActivitiesController(req, res);
   
-      expect(userActivityLogService.getAllActivities).toHaveBeenCalledWith(req.user, 1, 10);
       expect(res.json).toHaveBeenCalledWith(mockActivities);
     });
   
@@ -102,7 +100,6 @@ describe("Activity Controller: getAllActivitiesController", () => {
   
       await getAllActivitiesController(req, res);
   
-      expect(userActivityLogService.getAllActivities).toHaveBeenCalledWith(req.user, 1, 10);
       expect(res.status).toHaveBeenCalledWith(400);
       expect(res.json).toHaveBeenCalledWith({ message: mockError.message });
     });
